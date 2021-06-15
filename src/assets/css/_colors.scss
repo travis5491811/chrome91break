@@ -1,0 +1,92 @@
+// SASS style sheet */
+// Palette color codes */
+// Palette URL: http://paletton.com/#uid=100100kJS6KvW5fuP8MNdeqCnl7 */
+
+// https://color.adobe.com/create/color-wheel/?base=2&rule=Shades&selected=4&name=My%20Color%20Theme&mode=rgb&rgbvalues=0.28627450980392155,0.03529411764705882,0.03529411764705882,0.5,0.061643835616438325,0.061643835616438325,1,0.12328767123287665,0.12328767123287665,0.25,0.030821917808219162,0.030821917808219162,0.9,0.11095890410958899,0.11095890410958899&swatchOrder=0,1,2,3,4
+// Main Primary color */
+$color-primary-0: #490909;
+$color-primary-1: #7F1010;
+$color-primary-2: #FF1F1F;
+$color-primary-3: #400808;
+$color-primary-4: #E51C1C;
+$color-primary-5: #000;
+$color-primary-6: #D3D3D3;
+
+// Notification Colors
+$color-primary-alert-success: #3c763d;
+$color-primary-alert-success-background: #d6e9c6;
+$color-primary-alert-success-background-border: #d6e9c6;
+
+$color-primary-alert-info: #31708f;
+$color-primary-alert-info-background: #d9edf7;
+$color-primary-alert-info-background-border: #bce8f1;
+
+$color-primary-alert-warning: #8a6d3b;
+$color-primary-alert-warning-background: #fcf8e3;
+$color-primary-alert-warning-background-border: #faebcc;
+
+$color-primary-alert-danger: #a94442;
+$color-primary-alert-danger-background: #f2dede;
+$color-primary-alert-danger-background-border: #ebccd1;
+
+
+// Colors
+// Theme Setup Example from https://medium.com/@dmitriy.borodiy/easy-color-theming-with-scss-bc38fd5734d1
+$themes: (
+  default: (
+    // Nav Top
+    navMainTopBackground1: $color-primary-0,
+    navMainTopBackgroundHover1: $color-primary-2,
+    navMainTopFontColor1: $color-primary-6,
+    navMainTopFontColorHover1: $color-primary-0,
+    navMainTopFontColorActive1: $color-primary-2,
+    navMainTopLogoColor1: $color-primary-0,
+    navMainTopLogoColor2: $color-primary-2,
+    navMainTopLogoColorShadow1: $color-primary-5,
+    navMainTopDropDownBackground1: $color-primary-0,
+    navMainTopDropDownBackgroundHover1: $color-primary-0,
+    navMainTopDropDownBackgroundActive1: $color-primary-0,
+    navMainTopDropDownBackgroundSelected1: $color-primary-0,
+    // Nav Left
+    navMainLeftBackground1: $color-primary-0,
+    navMainLeftBorder1: $color-primary-0,
+    navMainLeftMenuBackground1: $color-primary-1,
+    navMainLeftMenuTextHover1: $color-primary-2,
+    navMainLeftSubMenuBackgroundHover1: $color-primary-3,
+    navMainLeftSubMenuTextHover1: $color-primary-2,
+    navMainLeftFontColor1: $color-primary-6,
+    navMainLeftFontColorHover1: $color-primary-0,
+    navMainLeftFontColorActive1: $color-primary-2,
+    navMainLeftDropDownBackground1: $color-primary-0,
+    navMainLeftDropDownBackgroundHover1: $color-primary-0,
+    navMainLeftDropDownBackgroundActive1: $color-primary-0,
+    navMainLeftDropDownBackgroundSelected1: $color-primary-0,
+  ),
+  // dark: (
+  //   backgroundColor: #222,
+  //   textColor: #ddd,
+  //   buttonTextColor: #aaa,
+  //   buttonTextTransform: uppercase,
+  //   buttonTextHoverColor: #ddd,
+  //   buttonColor: #333,
+  //   buttonBorder: 1px solid #aaa,
+  // ),
+);
+
+@mixin themify($themes) {
+  @each $theme, $map in $themes {
+    .theme-#{$theme} & {
+      $theme-map: () !global;
+      @each $key, $submap in $map {
+        $value: map-get(map-get($themes, $theme), '#{$key}');
+        $theme-map: map-merge($theme-map, ($key: $value)) !global;
+      }
+      @content;
+      $theme-map: null !global;
+    }
+  }
+}
+
+@function themed($key) {
+  @return map-get($theme-map, $key);
+}

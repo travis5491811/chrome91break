@@ -1,0 +1,94 @@
+.table-container {
+  height: calc(100vh - 290px) !important;
+}
+
+.table-container table {
+  display: flex !important;
+  flex-flow: column !important;
+  height: 100% !important;
+  width: 100% !important;
+}
+.table-container table thead {
+  flex: 0 0 auto !important;
+  width: 100% !important;
+}
+.table-container table tbody {
+  flex: 1 1 auto !important;
+  display: block !important;
+  width: 100% !important;
+  overflow-y: auto !important;
+}
+.table-container table tbody tr {
+  width: 100% !important;
+}
+.table-container table thead,
+.table-container table tbody tr {
+  display: table !important;
+  table-layout: fixed !important;
+}
+
+.table-container table {
+  border-collapse: collapse !important;
+}
+
+.table-container table td,
+.table-container table th {
+  padding: 0.4em !important;
+}
+
+.table-container table th {
+  border: 1px solid black !important;
+  font-size: 0.7vw !important;
+}
+
+.table-container table td {
+  border: 1px solid #e7e1e1 !important;
+  font-size: 0.85em !important;
+  white-space: nowrap !important;
+
+  text-align: center !important;
+  padding: 10px 5px !important;
+  white-space: nowrap !important;
+  text-overflow: ellipsis !important;
+
+}
+.table-container table thead {
+  border: 2px solid #490909 !important;
+}
+
+.table-container th {
+  background-color: #490909;
+  color: #b5aba4 !important;
+  cursor: pointer !important;
+  -webkit-user-select: none !important;
+  -moz-user-select: none !important;
+  -ms-user-select: none !important;
+  user-select: none !important;
+}
+
+.table-container table tbody td {
+  padding: 8px !important;
+  cursor: pointer !important;
+}
+
+.table-container table tbody tr:hover {
+  background-color: rgba(197, 41, 41, 0.5) !important;
+}
+
+.table-container table thead td {
+  padding: 10px 5px;
+}
+
+.table-container tr:nth-child(even) {
+  background-color: rgba(197, 41, 41, 0.144) !important;
+}
+
+.table-container td {
+  max-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-size: 0.2px !important;
+}
+
+
